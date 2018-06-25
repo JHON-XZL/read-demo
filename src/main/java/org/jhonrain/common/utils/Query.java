@@ -7,11 +7,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 查询参数
+ * <p>功能描述</br>查询参数</p>
  *
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2017-03-14 23:15
+ * @author jiangy19
+ * @version v1.0
+ * @projectName happy-read
+ * @date 2018/6/19 15:01
  */
 public class Query extends LinkedHashMap<String, Object> {
   private static final long serialVersionUID = 1L;

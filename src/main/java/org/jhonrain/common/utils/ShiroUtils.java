@@ -7,11 +7,12 @@ import org.jhonrain.common.exception.RainbowException;
 import org.jhonrain.modules.sys.entity.SysUserDO;
 
 /**
- * Shiro工具类
+ * <p>功能描述</br>Shiro工具类</p>
  *
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年11月12日 上午9:49:19
+ * @author jiangy19
+ * @version v1.0
+ * @projectName happy-read
+ * @date 2018/6/19 15:01
  */
 public class ShiroUtils {
 

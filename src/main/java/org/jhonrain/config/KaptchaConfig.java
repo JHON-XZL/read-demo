@@ -7,26 +7,26 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Properties;
 
-
 /**
- * 生成验证码配置
+ * <p>功能描述</br>生成验证码配置</p>
  *
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2017-04-20 19:22
+ * @author jiangy19
+ * @version v1.0
+ * @projectName happy-read
+ * @date 2018/6/19 13:56
  */
 @Configuration
 public class KaptchaConfig {
 
-    @Bean
-    public DefaultKaptcha producer() {
-        Properties properties = new Properties();
-        properties.put("kaptcha.border", "no");
-        properties.put("kaptcha.textproducer.font.color", "black");
-        properties.put("kaptcha.textproducer.char.space", "5");
-        Config config = new Config(properties);
-        DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
-        defaultKaptcha.setConfig(config);
-        return defaultKaptcha;
-    }
+  @Bean
+  public DefaultKaptcha producer() {
+    Properties properties = new Properties();
+    properties.put("kaptcha.border", "no");
+    properties.put("kaptcha.textproducer.font.color", "black");
+    properties.put("kaptcha.textproducer.char.space", "5");
+    Config config = new Config(properties);
+    DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
+    defaultKaptcha.setConfig(config);
+    return defaultKaptcha;
+  }
 }

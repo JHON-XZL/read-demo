@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.jhonrain.modules.sys.dao.SysUserTokenDao">
+
+    <select id="queryByUserId" resultType="org.jhonrain.modules.sys.entity.SysUserTokenDO">
+        SELECT *
+        FROM t_sys_user_token
+        WHERE user_id = #{value}
+    </select>
+
+    <select id="queryByToken" resultType="org.jhonrain.modules.sys.entity.SysUserTokenDO">
+        SELECT *
+        FROM t_sys_user_token
+        WHERE token = #{value}
+    </select>
+
+    <insert id="save" parameterType="org.jhonrain.modules.sys.entity.SysUserTokenDO">
+        INSERT INTO t_sys_user_token
+        (
+            `user_id`,
+            `token`,
+            `expire_time`,
+            `update_time`
+        )
+        VALUES
+            (
+                #{userId},
+                #{token},
+                #{expireTime},
+                #{updateTime}
+            )
+    </insert>
+
+    <update id="update" parameterType="org.jhonrain.modules.sys.entity.SysUserTokenDO">
+        update t_sys_user_token
+        <set>
+            <if test="token != null">`token` = #{token},</if>
+            <if test="expireTime != null">`expire_time` = #{expireTime},</if>
+            <if test="updateTime != null">`update_time` = #{updateTime}</if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+</mapper>

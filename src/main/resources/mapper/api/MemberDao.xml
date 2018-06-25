@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jhonrain.modules.api.dao.MemberDao">
+
+    <insert id="insert" parameterType="org.jhonrain.modules.api.entity.MemberDO">
+        INSERT INTO t_member
+        (
+            `member_card_num`,
+            `open_id`,
+            `nick_name`,
+            `avatar_url`,
+            `country`,
+            `province`,
+            `city`,
+            `status`,
+            `create_date`,
+            `update_date`
+        )
+        VALUES
+            (
+                #{memberCardNum},
+                #{openId},
+                #{nickName},
+                #{avatarUrl},
+                #{country},
+                #{province},
+                #{city},
+                #{status},
+                #{createDate},
+                #{updateDate}
+            )
+    </insert>
+
+    <update id="update" parameterType="org.jhonrain.modules.api.entity.MemberDO">
+        update t_member
+        <set>
+            <if test="memberCardNum != null">`member_card_num` = #{memberCardNum},</if>
+            <if test="openId != null">`open_id` = #{openId},</if>
+            <if test="nickName != null">`nick_name` = #{nickName},</if>
+            <if test="avatarUrl != null">`avatar_url` = #{avatarUrl},</if>
+            <if test="country != null">`country` = #{country},</if>
+            <if test="province != null">`province` = #{province},</if>
+            <if test="city != null">`city` = #{city},</if>
+            <if test="status != null">`status` = #{status},</if>
+            <if test="createDate != null">`create_date` = #{createDate},</if>
+            <if test="updateDate != null">`update_date` = #{updateDate}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="queryByOpenId" parameterType="java.lang.String" resultType="org.jhonrain.modules.api.entity.MemberDO">
+        select * from t_member
+        <where>
+            <if test="openId != null and openId.trim() != ''">
+                and `open_id` = #{openId}
+            </if>
+        </where>
+    </select>
+</mapper>

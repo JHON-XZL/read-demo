@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jhonrain.modules.api.dao.MemberAccessTokenDao">
+    <insert id="insert" parameterType="org.jhonrain.modules.api.entity.MemberAccessTokenDO">
+        INSERT INTO t_member_access_token
+        (
+            `open_id`,
+            `session_key`,
+            `access_token`,
+            `create_date`,
+            `update_date`,
+            `expire_date`
+        )
+        VALUES
+            (
+                #{openId},
+                #{sessionKey},
+                #{accessToken},
+                #{createDate},
+                #{updateDate},
+                #{expireDate}
+            )
+    </insert>
+
+    <update id="update" parameterType="org.jhonrain.modules.api.entity.MemberAccessTokenDO">
+        update t_member_access_token
+        <set>
+            <if test="openId != null">`open_id` = #{openId},</if>
+            <if test="sessionKey != null">`session_key` = #{sessionKey},</if>
+            <if test="accessToken != null">`access_token` = #{accessToken},</if>
+            <if test="createDate != null">`create_date` = #{createDate},</if>
+            <if test="updateDate != null">`update_date` = #{updateDate},</if>
+            <if test="expireDate != null">`expire_date` = #{expireDate}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="queryByOpenId" parameterType="java.lang.String"
+            resultType="org.jhonrain.modules.api.entity.MemberAccessTokenDO">
+        select * from t_member_access_token
+        <where>
+            <if test="openId != null and openId.trim() != ''">
+                and `open_id` = #{openId}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryRecordByToken" parameterType="java.lang.String"
+            resultType="org.jhonrain.modules.api.entity.MemberAccessTokenDO">
+        select * from t_member_access_token
+        <where>
+            <if test="accessToken != null and accessToken.trim() != ''">
+                and `access_token` = #{accessToken}
+            </if>
+        </where>
+    </select>
+
+</mapper>
